@@ -1,1 +1,0 @@
-'data' folder contains raw data and processed data. In the 'processed' folder, it contains training data and testing data.
