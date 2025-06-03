@@ -1,0 +1,35 @@
+Mô tả các trường dữ liệu
+- Age: Tuổi của nhân viên
+- Attrition: tỷ lệ nhân viên nghỉ việc
+- BusinessTravel: tần suất nhân viên đi công tác
+- DailyRate: Tiền lương hàng ngày của nhân viên
+- Department: Phòng ban nhân viên
+- DistanceFromHome: Khoảng cách từ nhà đến văn phòng theo km
+- Education: Trình độ của nhân viên (bị che)
+- EducationField: Luồng giáo dục
+- EmployeeCount: Số lượng nhân viên
+- EmployeeNumber: số lượng nhân viên
+- EnvironmentSatisfaction: Sự hài lòng về môi trường làm việc
+- HourlyRate: mức lương theo giờ của nhân viên
+- JobInvolvement: Mức độ tham gia công việc
+- JobLevel: cấp độ của Job
+- JobRole: vai trò công việc của nhân viên
+- JobSatisfaction: nhân viên có hài lòng không?
+- MaritalStatus: nhân viên đã kết hôn hay chưa
+- MonthlyIncome: thu nhập của nhân viên
+- MonthlyRate: mức lương hàng tháng của nhân viên
+- NumCompaniesWorked: số công ty đã làm việc
+- Over18: độ tuổi trên 18
+- OverTime: nhân viên làm thêm giờ
+- PercentSalaryHike: tăng lương
+- PerformanceRating: tỷ lệ hiệu suất
+- RelationshipSatisfaction: Sự hài lòng về mối quan hệ
+- StandardHours: giờ làm việc tiêu chuẩn mỗi tuần
+- StockOptionLevel: mức quyền chọn cổ phiếu của công ty
+- TotalWorkingYears: tổng số năm làm việc
+- TrainingTimesLastYear: thời gian đào tạo
+- WorkLifeBalance: Cân bằng giữa công việc và cuộc sống
+- YearsAtCompany: tổng số năm làm việc tại công ty hiện tại
+- YearsInCurrentRole: tổng số năm giữ chức vụ hiện tại
+- YearsSinceLastPromotion: số năm kể từ lần thăng chức gần nhất
+- YearsWithCurrManager: Số năm làm việc dưới quyền quản lý hiện tại
