@@ -1,10 +1,10 @@
 
 # ĐÁNH GIÁ KẾT QUẢ SAU KHI KIỂM TRA Ở CÁC BƯỚC:
-# KIỂM TRA SỐ LƯỢNG GIÁ TRỊ NULL Ở MỖI TRƯỜNG
+## KIỂM TRA SỐ LƯỢNG GIÁ TRỊ NULL Ở MỖI TRƯỜNG
 -	Sau khi kiểm tra thì ta nhận thấy không có trường dữ liệu nào bị bỏ trống
-# KIỂM TRA GIÁ TRỊ TRÙNG LẶP
+## KIỂM TRA GIÁ TRỊ TRÙNG LẶP
 -	Không có giá trị nào trùng lặp.
-# KIỂM TRA OUTLIERS
+## KIỂM TRA OUTLIERS
 Lựa chọn các trường dữ liệu định lượng để thực hiện kiểm tra outlier 
 
 Index(['Age', 'DailyRate', 'DistanceFromHome', 'Education', 'EmployeeCount',
@@ -87,7 +87,7 @@ Các trường dữ liệu trên đây là các trường mà ta sẽ thực hi�
 	Có vài giá trị lớn hơn phần còn lại (> 15 năm).
 •	Đánh giá chung: Việc có sự xuất hiện dữ liệu outliers trong bộ dữ liệu thuộc lĩnh vực này nguyên nhân là do đặc thù của các công ty, giả sử ở trường MonthlyIncome, có rất nhiều giá trị outliers vì những người này nắm giữ những vị trí quan trọng trong công ty, và mức lương của họ sẽ có sự chênh lệch đối với nhân viên trong công ty, nên mặt bằng chung các giá trị này thường trội hơn giá trị trung bình.
 •	Đề xuất: Ta sẽ không loại bỏ các giá trị outliers, và ta sẽ thực hiện đánh giá ở bước Data Analysis để đưa ra kết luận
-# THỐNG KÊ DỮ LIỆU 
+## THỐNG KÊ DỮ LIỆU 
 Sau khi thực hiện việc thống kê dữ liệu ta có vài nhận xét cơ bản về bộ dữ liệu như sau
 1.	Độ tuổi (Age): 
 o	Trung bình: 36.92 tuổi, cho thấy lực lượng lao động có độ tuổi trung bình khá trẻ.
@@ -121,6 +121,6 @@ o	Hiệu suất: Trung bình 3.15 (thang 3-4), cho thấy đa số nhân viên �
 o	Tăng lương: Trung bình 15.21%, dao động từ 11% đến 25%.
 10.	Cân bằng công việc - cuộc sống (WorkLifeBalance): 
 o	Trung bình: 2.76 (thang 1-4), với 50% nhân viên đánh giá từ 2 đến 3.
-# THỰC HIỆN MÃ HÓA CÁC TRƯỜNG DỮ LIỆU ĐỊNH TÍNH 
+## THỰC HIỆN MÃ HÓA CÁC TRƯỜNG DỮ LIỆU ĐỊNH TÍNH 
 
-# PHÂN CHIA TẬP TRAIN-TEST
+## PHÂN CHIA TẬP TRAIN-TEST
