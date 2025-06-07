@@ -5,6 +5,7 @@ I. Tổng quan về tập dữ liệu
 3.	Loại dữ liệu: 
 -	Int64: Age, DailyRate, DistanceFromHome, Education, EmployeeCount, EmployeeNumber, EnvironmentSatisfaction, HourlyRate, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, MonthlyRate, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StandardHours, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager.
 -	Object:  Attrition, BusinessTravel, DistanceFromHome, EducationField, Gender, JobRole, MaritalStatus, Over18, OverTime.
+
 II. Mô tả các cột và phân tích ngoại lệ
 Dưới đây là mô tả chi tiết từng cột, phạm vi giá trị, và các tính năng ngoại lệ tiềm năng:
 1.	Age (Tuổi): 
@@ -147,6 +148,7 @@ Dưới đây là mô tả chi tiết từng cột, phạm vi giá trị, và c�
 -	Giá trị: No, Yes (2 giá trị).
 -	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Đây là cột mục tiêu quan trọng để phân tích tỷ lệ nghỉ việc của nhân viên.
+
 PHÂN CHIA CÁC TRƯỜNG DỮ LIỆU THÀNH CÁC NHÓM 
 1.	Thông tin nhân viên
 -	Age: 18 - 60
