@@ -1,6 +1,6 @@
 ## (+) BÁO CÁO MÔ TẢ TẬP DỮ LIỆU TRƯỚC KHI XỬ LÝ
 I. Tổng quan về tập dữ liệu
-1.	Số lượng dòng: Dựa trên số lượng giá trị của cột EmployeeNumber (1470 giá trị), có thể suy ra rằng tập dữ liệu có khả năng chứa khoảng 1470 mẫu (giả định mỗi nhân viên có một số định danh duy nhất).
+1.	Số lượng dòng: Dựa trên số lượng giá trị của cột EmployeeNumber (1470 giá trị), có thể suy ra rằng tập dữ liệu có khả năng chứa khoảng 1470 dòng (giả định mỗi nhân viên có một số định danh duy nhất).
 2.	Số lượng cột: Có 35 cột được liệt kê trong tập dữ liệu.
 3.	Loại dữ liệu: 
 -	Int64: Age, DailyRate, DistanceFromHome, Education, EmployeeCount, EmployeeNumber, EnvironmentSatisfaction, HourlyRate, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, MonthlyRate, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StandardHours, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager.
