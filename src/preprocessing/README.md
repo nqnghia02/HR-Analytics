@@ -1,65 +1,63 @@
 ## (+) BÁO CÁO MÔ TẢ TẬP DỮ LIỆU TRƯỚC KHI XỬ LÝ
 I. Tổng quan về tập dữ liệu
-1.	Số lượng mẫu: Không được cung cấp trực tiếp số lượng mẫu (rows) trong tập dữ liệu. Tuy nhiên, dựa trên số lượng giá trị duy nhất của cột EmployeeNumber (1470 giá trị), có thể suy ra rằng tập dữ liệu có khả năng chứa khoảng 1470 mẫu (giả định mỗi nhân viên có một số định danh duy nhất).
-2.	Số lượng cột: Có 35 cột được liệt kê trong tập dữ liệu, bao gồm các cột số, danh mục và nhị phân.
+1.	Số lượng dòng: Dựa trên số lượng giá trị của cột EmployeeNumber (1470 giá trị), có thể suy ra rằng tập dữ liệu có khả năng chứa khoảng 1470 mẫu (giả định mỗi nhân viên có một số định danh duy nhất).
+2.	Số lượng cột: Có 35 cột được liệt kê trong tập dữ liệu.
 3.	Loại dữ liệu: 
--	Số (Numeric): Các cột như Age, DailyRate, MonthlyIncome, MonthlyRate, HourlyRate, DistanceFromHome, EmployeeNumber, NumCompaniesWorked, PercentSalaryHike, TotalWorkingYears, TrainingTimesLastYear, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager.
--	Danh mục (Categorical): Các cột như BusinessTravel, Department, EducationField, JobRole, MaritalStatus.
--	Nhị phân (Binary): Các cột như Gender, OverTime, Attrition.
--	Hằng số (Constant): Các cột như EmployeeCount, Over18, StandardHours chỉ có một giá trị duy nhất, có thể không mang nhiều thông tin phân tích.
-II. Mô tả các cột và phân tích tính năng ngoại lệ
+-	Int64: Age, DailyRate, DistanceFromHome, Education, EmployeeCount, EmployeeNumber, EnvironmentSatisfaction, HourlyRate, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, MonthlyRate, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StandardHours, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager.
+-	Object:  Attrition, BusinessTravel, DistanceFromHome, EducationField, Gender, JobRole, MaritalStatus, Over18, OverTime.
+II. Mô tả các cột và phân tích ngoại lệ
 Dưới đây là mô tả chi tiết từng cột, phạm vi giá trị, và các tính năng ngoại lệ tiềm năng:
 1.	Age (Tuổi): 
--	Phạm vi giá trị: Từ 18 đến 60 (43 giá trị duy nhất).
+-	Phạm vi giá trị: Từ 18 đến 60.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Phạm vi tuổi hợp lý cho lực lượng lao động. Không có giá trị ngoại lệ rõ ràng (ví dụ: không có giá trị âm hoặc quá lớn như 100). Phân bố tuổi có thể cần được kiểm tra thêm để phát hiện xem có bất kỳ nhóm tuổi nào chiếm ưu thế hay không.
 2.	BusinessTravel (Tần suất công tác): 
 -	Giá trị: Non-Travel, Travel_Frequently, Travel_Rarely (3 giá trị).
--	Kiểu dữ liệu: Danh mục.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Đây là cột danh mục với ba mức độ, phù hợp để phân tích tần suất công tác.
 3.	DailyRate (Lương ngày): 
--	Phạm vi giá trị: Từ 102 đến 1496 (563 giá trị duy nhất).
+-	Phạm vi giá trị: Từ 102 đến 1496.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
--	Nhận xét: Phạm vi giá trị rộng, có thể cần kiểm tra phân bố để xác định xem có giá trị nào bất thường (quá thấp hoặc quá cao so với mức lương ngày trung bình). Các giá trị như 102 hoặc 1496 có thể là ngoại lệ nếu không phù hợp với bối cảnh công ty.
+-	Nhận xét: Phạm vi giá trị rộng, có thể cần kiểm tra phân bố để xác định xem có giá trị nào bất thường (quá thấp hoặc quá cao so với mức lương ngày trung bình). 
 4.	Department (Phòng ban): 
 -	Giá trị: Human Resources, Research & Development, Sales (3 giá trị).
--	Kiểu dữ liệu: Danh mục.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này phân loại rõ ràng các phòng ban trong tổ chức.
 5.	DistanceFromHome (Khoảng cách từ nhà đến nơi làm việc): 
--	Phạm vi giá trị: Từ 1 đến 29 (29 giá trị duy nhất).
+-	Phạm vi giá trị: Từ 1 đến 29.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Khoảng cách hợp lý, có thể là số dặm hoặc kilômét. Không có giá trị ngoại lệ rõ ràng, nhưng cần kiểm tra phân bố để xem liệu có nhiều nhân viên sống quá xa (ví dụ: 29) so với phần lớn.
 6.	Education (Trình độ học vấn): 
 -	Phạm vi giá trị: Từ 1 đến 5 (5 giá trị).
--	Kiểu dữ liệu: Số nguyên (np.int64), có thể đại diện cho các mức học vấn (ví dụ: 1 = trung học, 5 = tiến sĩ).
+-	Kiểu dữ liệu: Số nguyên (np.int64), có thể đại diện cho các mức học vấn.
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này có thể được xử lý như một biến danh mục có thứ tự.
 7.	EducationField (Lĩnh vực học vấn): 
 -	Giá trị: Human Resources, Life Sciences, Marketing, Medical, Other, Technical Degree (6 giá trị).
--	Kiểu dữ liệu: Danh mục.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này phù hợp để phân tích sự phân bố nhân viên theo lĩnh vực học vấn.
 8.	EmployeeCount (Số lượng nhân viên): 
--	Giá trị: Chỉ có 1 (1 giá trị duy nhất).
+-	Giá trị: Chỉ có 1.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Cột này không mang thông tin phân tích vì chỉ có một giá trị duy nhất. Có thể xem xét loại bỏ cột này trong quá trình xử lý dữ liệu.
 9.	EmployeeNumber (Số định danh nhân viên): 
--	Phạm vi giá trị: Từ 1 đến 2068 (1470 giá trị duy nhất).
+-	Phạm vi giá trị: Từ 1 đến 2068.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
--	Nhận xét: Đây là định danh duy nhất cho mỗi nhân viên, không có giá trị ngoại lệ. Tuy nhiên, cần kiểm tra xem có giá trị trùng lặp hoặc thiếu sót nào không (ví dụ: khoảng cách giữa 1 và 2068).
+-	Nhận xét: Đây là định danh cho mỗi nhân viên, không có giá trị ngoại lệ. Tuy nhiên, cần kiểm tra xem có giá trị trùng lặp hoặc thiếu sót nào không.
 10.	EnvironmentSatisfaction (Mức độ hài lòng với môi trường làm việc): 
 -	Phạm vi giá trị: Từ 1 đến 4 (4 giá trị).
--	Kiểu dữ liệu: Số nguyên (np.int64), có thể là thang đo Likert.
+-	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này có thể được xử lý như một biến danh mục có thứ tự.
 11.	Gender (Giới tính): 
 -	Giá trị: Female, Male (2 giá trị).
--	Kiểu dữ liệu: Nhị phân.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này phù hợp để phân tích sự khác biệt giới tính.
 12.	HourlyRate (Lương giờ): 
--	Phạm vi giá trị: Từ 30 đến 100 (71 giá trị duy nhất).
+-	Phạm vi giá trị: Từ 30 đến 100.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Phạm vi hợp lý cho lương giờ. Cần kiểm tra phân bố để xác định xem có giá trị nào bất thường (quá thấp hoặc quá cao) so với mức trung bình.
 13.	JobInvolvement (Mức độ tham gia công việc): 
 -	Phạm vi giá trị: Từ 1 đến 4 (4 giá trị).
--	Kiểu dữ liệu: Số nguyên (np.int64), có thể là thang đo Likert.
+-	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này có thể được xử lý như một biến danh mục có thứ tự.
 14.	JobLevel (Cấp bậc công việc): 
 -	Phạm vi giá trị: Từ 1 đến 5 (5 giá trị).
@@ -67,35 +65,35 @@ Dưới đây là mô tả chi tiết từng cột, phạm vi giá trị, và c�
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này có thể đại diện cho các cấp bậc trong tổ chức, phù hợp để phân tích sự phân bố nhân viên theo cấp bậc.
 15.	JobRole (Vai trò công việc): 
 -	Giá trị: 9 vai trò (Healthcare Representative, Human Resources, Laboratory Technician, Manager, Manufacturing Director, Research Director, Research Scientist, Sales Executive, Sales Representative).
--	Kiểu dữ liệu: Danh mục.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này cung cấp thông tin chi tiết về vai trò công việc trong tổ chức.
 16.	JobSatisfaction (Mức độ hài lòng với công việc): 
 -	Phạm vi giá trị: Từ 1 đến 4 (4 giá trị).
--	Kiểu dữ liệu: Số nguyên (np.int64), có thể là thang đo Likert.
+-	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này có thể được xử lý như một biến danh mục có thứ tự.
 17.	MaritalStatus (Tình trạng hôn nhân): 
 -	Giá trị: Divorced, Married, Single (3 giá trị).
--	Kiểu dữ liệu: Danh mục.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này phù hợp để phân tích nhân khẩu học.
 18.	MonthlyIncome (Thu nhập tháng): 
--	Phạm vi giá trị: Từ 1009 đến 19999 (548 giá trị duy nhất).
+-	Phạm vi giá trị: Từ 1009 đến 19999.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Phạm vi giá trị rộng, với thu nhập thấp nhất là 1009 và cao nhất là 19999. Các giá trị cực đại (gần 19999) hoặc cực tiểu (gần 1009) có thể là ngoại lệ, cần kiểm tra phân bố để xác định xem có bất thường không (ví dụ: thu nhập quá thấp so với vai trò công việc hoặc cấp bậc).
 19.	MonthlyRate (Tỷ lệ lương tháng): 
--	Phạm vi giá trị: Từ 2094 đến 26999 (659 giá trị duy nhất).
+-	Phạm vi giá trị: Từ 2094 đến 26999.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Phạm vi giá trị rất rộng. Các giá trị cực đại (gần 26999) hoặc cực tiểu (gần 2094) có thể là ngoại lệ, cần kiểm tra để đảm bảo tính hợp lý so với MonthlyIncome.
 20.	NumCompaniesWorked (Số công ty đã làm việc): 
 -	Phạm vi giá trị: Từ 0 đến 9 (10 giá trị).
 -	Kiểu dữ liệu: Số nguyên (np.int64).
--	Nhận xét: Không có giá trị ngoại lệ rõ ràng. Giá trị 0 (chưa làm việc ở công ty nào trước đó) và 9 (làm việc ở 9 công ty) là hợp lý, nhưng cần kiểm tra phân bố để xem liệu giá trị 9 có hiếm không.
+-	Nhận xét: Không có giá trị ngoại lệ rõ ràng. Giá trị 0 (chưa làm việc ở công ty nào trước đó) và 9 (làm việc ở 9 công ty) là hợp lý, nhưng cần kiểm tra phân bố để xem liệu giá trị 9 có chênh lệch nhiều so với giá trị khác không.
 21.	Over18 (Trên 18 tuổi): 
--	Giá trị: Chỉ có Y (1 giá trị duy nhất).
--	Kiểu dữ liệu: Danh mục.
+-	Giá trị: Chỉ có Y.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Cột này không mang thông tin phân tích vì tất cả giá trị đều là Y. Có thể xem xét loại bỏ trong quá trình xử lý.
 22.	OverTime (Làm thêm giờ): 
 -	Giá trị: No, Yes (2 giá trị).
--	Kiểu dữ liệu: Nhị phân.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này phù hợp để phân tích tác động của làm thêm giờ.
 23.	PercentSalaryHike (Tỷ lệ tăng lương): 
 -	Phạm vi giá trị: Từ 11% đến 25% (15 giá trị).
@@ -103,14 +101,14 @@ Dưới đây là mô tả chi tiết từng cột, phạm vi giá trị, và c�
 -	Nhận xét: Phạm vi hợp lý cho tỷ lệ tăng lương. Không có giá trị ngoại lệ rõ ràng, nhưng cần kiểm tra phân bố để xác định mức tăng lương phổ biến.
 24.	PerformanceRating (Xếp hạng hiệu suất): 
 -	Phạm vi giá trị: 3 và 4 (2 giá trị).
--	Kiểu dữ liệu: Số nguyên (np.int64), có thể là thang đo đánh giá.
+-	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Không có giá trị ngoại lệ. Chỉ có hai mức đánh giá, có thể cần kiểm tra sự phân bố để xem có mất cân bằng không.
 25.	RelationshipSatisfaction (Mức độ hài lòng với mối quan hệ): 
 -	Phạm vi giá trị: Từ 1 đến 4 (4 giá trị).
--	Kiểu dữ liệu: Số nguyên (np.int64), có thể là thang đo Likert.
+-	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này có thể được xử lý như một biến danh mục có thứ tự.
 26.	StandardHours (Số giờ làm việc tiêu chuẩn): 
--	Giá trị: Chỉ có 80 (1 giá trị duy nhất).
+-	Giá trị: Chỉ có 80.
 -	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Cột này không mang thông tin phân tích vì chỉ có một giá trị. Có thể xem xét loại bỏ.
 27.	StockOptionLevel (Mức quyền chọn cổ phiếu): 
@@ -127,7 +125,7 @@ Dưới đây là mô tả chi tiết từng cột, phạm vi giá trị, và c�
 -	Nhận xét: Không có giá trị ngoại lệ rõ ràng. Giá trị 0 (không đào tạo) và 6 (đào tạo nhiều lần) là hợp lý, nhưng cần kiểm tra phân bố.
 30.	WorkLifeBalance (Cân bằng công việc - cuộc sống): 
 -	Phạm vi giá trị: Từ 1 đến 4 (4 giá trị).
--	Kiểu dữ liệu: Số nguyên (np.int64), có thể là thang đo Likert.
+-	Kiểu dữ liệu: Số nguyên (np.int64).
 -	Nhận xét: Không có giá trị ngoại lệ. Cột này có thể được xử lý như một biến danh mục có thứ tự.
 31.	YearsAtCompany (Số năm làm việc tại công ty): 
 -	Phạm vi giá trị: Từ 0 đến 40 (36 giá trị).
@@ -147,7 +145,7 @@ Dưới đây là mô tả chi tiết từng cột, phạm vi giá trị, và c�
 -	Nhận xét: Giá trị 17 có thể là ngoại lệ nếu ít nhân viên làm việc lâu với cùng một quản lý. Cần kiểm tra phân bố.
 35.	Attrition (Tỷ lệ nghỉ việc): 
 -	Giá trị: No, Yes (2 giá trị).
--	Kiểu dữ liệu: Nhị phân.
+-	Kiểu dữ liệu: Object.
 -	Nhận xét: Không có giá trị ngoại lệ. Đây là cột mục tiêu quan trọng để phân tích tỷ lệ nghỉ việc của nhân viên.
 PHÂN CHIA CÁC TRƯỜNG DỮ LIỆU THÀNH CÁC NHÓM 
 1.	Thông tin nhân viên
@@ -209,7 +207,7 @@ IV. Đề xuất xử lý dữ liệu
 -	Sử dụng biểu đồ hộp (boxplot) hoặc phương pháp thống kê (như IQR) để xác định và xử lý các giá trị ngoại lệ trong các cột DailyRate, MonthlyIncome, MonthlyRate, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, và YearsWithCurrManager.
 -	Kiểm tra tính nhất quán giữa các cột liên quan (ví dụ: MonthlyIncome với JobRole và JobLevel).
 2.	Loại bỏ cột không mang thông tin: 
--	Xem xét loại bỏ các cột EmployeeCount, Over18, và StandardHours vì chỉ có một giá trị duy nhất.
+-	Xem xét loại bỏ các cột EmployeeCount, Over18, và StandardHours vì chỉ có một giá trị.
 3.	Xử lý dữ liệu danh mục: 
 -	Mã hóa các cột danh mục (BusinessTravel, Department, EducationField, JobRole, MaritalStatus, Gender, OverTime, Attrition) thành dạng số (one-hot encoding hoặc label encoding) để sử dụng trong các mô hình học máy.
 4.	Phân tích phân bố: 
@@ -219,7 +217,7 @@ IV. Đề xuất xử lý dữ liệu
 -	Dữ liệu được cung cấp không đề cập đến giá trị thiếu, nhưng cần kiểm tra toàn bộ tập dữ liệu để đảm bảo không có giá trị NaN hoặc null.
 ________________________________________
 V. Kết luận
-Tập dữ liệu có khoảng 1470 mẫu và 35 cột, bao gồm các biến số, danh mục và nhị phân, cung cấp thông tin toàn diện về nhân viên trong tổ chức. Các cột như DailyRate, MonthlyIncome, MonthlyRate, và các cột liên quan đến thời gian làm việc (YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager) có khả năng chứa giá trị ngoại lệ cần được kiểm tra thêm. Các cột EmployeeCount, Over18, và StandardHours không mang thông tin phân tích và có thể được loại bỏ. Tập dữ liệu này phù hợp để phân tích các yếu tố ảnh hưởng đến tỷ lệ nghỉ việc (Attrition), nhưng cần được xử lý cẩn thận để đảm bảo chất lượng dữ liệu trước khi áp dụng các mô hình học máy.
+Tập dữ liệu có khoảng 1470 dòng và 35 cột, bao gồm các biến số, danh mục và nhị phân, cung cấp thông tin toàn diện về nhân viên trong tổ chức. Các cột như DailyRate, MonthlyIncome, MonthlyRate, và các cột liên quan đến thời gian làm việc (YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager) có khả năng chứa giá trị ngoại lệ cần được kiểm tra thêm. Các cột EmployeeCount, Over18, và StandardHours không mang thông tin phân tích và có thể được loại bỏ. Tập dữ liệu này phù hợp để phân tích các yếu tố ảnh hưởng đến tỷ lệ nghỉ việc (Attrition), nhưng cần được xử lý cẩn thận để đảm bảo chất lượng dữ liệu trước khi áp dụng các mô hình học máy.
  (+) ĐÁNH GIÁ KẾT QUẢ SAU KHI KIỂM TRA Ở CÁC BƯỚC:
 ## PHÂN CHIA TẬP TRAIN-TEST
 ## KIỂM TRA SỐ LƯỢNG GIÁ TRỊ NULL Ở MỖI TRƯỜNG
@@ -357,7 +355,7 @@ Sau khi thực hiện việc thống kê dữ liệu ta rút ra vài điều cơ
 22.	YearsInCurrentRole (Số năm ở vai trò hiện tại): 
 -	Phân bố: Trung bình 4.21 năm, độ lệch chuẩn 3.61, dao động từ 0 đến 18. Trung vị (3) thấp hơn trung bình, cho thấy phân bố lệch phải.
 23.	YearsSinceLastPromotion (Số năm kể từ lần thăng chức cuối): 
--	Phân bố: Trung bình 2.11 năm, độ lệch chuẩn 3.12, dao động từ 0 đến 15. Trung vị (1) thấp hơn trung bình, cho thấy phân bố lệch phải..
+-	Phân bố: Trung bình 2.11 năm, độ lệch chuẩn 3.12, dao động từ 0 đến 15. Trung vị (1) thấp hơn trung bình, cho thấy phân bố lệch phải.
 24.	YearsWithCurrManager (Số năm làm việc với quản lý hiện tại): 
 -	Phân bố: Trung bình 4.03 năm, độ lệch chuẩn 3.53, dao động từ 0 đến 17. Trung vị (3) thấp hơn trung bình, cho thấy phân bố lệch phải.
 ## THỰC HIỆN MÃ HÓA CÁC TRƯỜNG DỮ LIỆU ĐỊNH TÍNH 
