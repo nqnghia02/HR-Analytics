@@ -361,4 +361,6 @@ Sau khi thực hiện việc thống kê dữ liệu ta rút ra vài điều cơ
 24.	YearsWithCurrManager (Số năm làm việc với quản lý hiện tại): 
 -	Phân bố: Trung bình 4.03 năm, độ lệch chuẩn 3.53, dao động từ 0 đến 17. Trung vị (3) thấp hơn trung bình, cho thấy phân bố lệch phải.
 ## THỰC HIỆN MÃ HÓA CÁC TRƯỜNG DỮ LIỆU ĐỊNH TÍNH 
+## SAU KHI MÃ HÓA THỰC HIỆN SCALING
+Vì trong bộ dữ liệu này có một số trường có giá trị rất lớn (VD: MonthlyIncome). Điều này làm cho việc sử dụng SVM hoặc Logistic Regression có thể bị mất ổn định. Nên ta cần scaling để mô hình hội tụ nhanh hơn.
 
